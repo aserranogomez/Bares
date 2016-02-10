@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+        {% block body_block %}
+{% if user.is_authenticated %}
+    <div class="page-header">
+
+                <h1>Rango says... hello {{ user.username }}!</h1>
+            {% else %}
+                <h1>Rango says... hello world!</h1>
+            {% endif %}
+</div>
+
+           <div class="row-fluid">
+             <div class="span6">
+               <h3 class="panel-title">Bares</h3>
+
+               {% if baress %}
+                   <ul>
+                       {% for bares in baress %}
+                       <li><a href="{% url 'bares'  bares.slug %}">{{ bares.name }}</a> - {{bares.address}} - {{ bares.views }} view(s)</a></li>
+                       {% endfor %}
+                   </ul>
+               {% else %}
+                   <strong>There are no bares present.</strong>
+               {% endif %}
+
+
+         <div>
+            <div class="span6">
+              <h3 class="panel-title">Top Five Tapas</h3>
+
+              {% if tapas %}
+                  <ul>
+                      {% for tapa in tapas %}
+                      <li><a href="{{ tapa.url}}">{{ tapa.title }}</a> - {{ tapa.bares }} - {{ tapa.views }} view(s)</li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <strong>No tapas at present.</strong>
+              {% endif %}
+            </div>
+
+         </div>
+
+	<div id="container" style="width:75%; height:350px;"></div>
+        {% endblock %}

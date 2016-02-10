@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ bares_name }}{% endblock %}
+
+{% block body_block %}
+        <h1>{{ bares_name }}</h1>
+        {% if bares %}
+            {% if tapas %}
+            <ul>
+                {% for tapa in tapas %}
+                <li><a href="{{ tapa.url }}">{{ tapa.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No tapas currently in bares.</strong>
+                {% endif %}
+            {% if user.is_authenticated %}
+                <a href="/rango/bares/{{bares.slug}}/add_tapas/">Add Tapas</a>
+                {% endif %}
+            {% else %}
+                The specified bares {{ bares_name }} does not exist!
+        {% endif %}
+
+        <p>
+
+        <strong id="like_count">{{ bares.likes }}</strong> people like this bares
+
+        {% if user.is_authenticated %}
+            <button id="likes" data-catid="{{bares.id}}" class="btn btn-primary" type="button">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            Like
+            </button>
+        {% endif %}
+
+        </p>
+{% endblock %}
