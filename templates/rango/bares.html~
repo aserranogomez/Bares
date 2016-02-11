@@ -29,7 +29,7 @@
 
         <strong id="like_count">{{ bares.likes }}</strong> people like this bares
 	{% load easy_maps_tags %}
-        {% easy_map "Spain, Granada, Pedro Antonio de alarcon 40" 300 400 %}
+        {% easy_map "Spain, Granada, Pedro Antonio de alarcon 19" 300 400 %}
 
         {% if user.is_authenticated %}
             <button id="likes" data-catid="{{bares.id}}" class="btn btn-primary" type="button">

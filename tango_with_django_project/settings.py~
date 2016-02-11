@@ -30,7 +30,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TEMPLATE_DIRS = ("/home/andres/tango_with_django_project/templates/rango/",
+TEMPLATE_DIRS = ("/home/andres/rango-bares/templates/rango/",
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     TEMPLATE_PATH,
